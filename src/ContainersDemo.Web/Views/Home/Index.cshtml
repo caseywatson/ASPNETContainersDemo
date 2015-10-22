@@ -1,0 +1,51 @@
+﻿@using ContainersDemo.Web.Models
+
+@model RegistrationViewModel
+
+@{
+    ViewData["Title"] = "Volunteer registration";
+}
+
+<h1>Volunteer registration</h1>
+<hr />
+
+@if (string.IsNullOrEmpty(Model.SuccessMessage) == false)
+{
+    <div class="alert alert-success">
+        @Model.SuccessMessage
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First name" })
+        <div class="has-error">
+            @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last name" })
+        <div class="has-error">
+            @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EmailAddress)
+        @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", placeholder = "Email address" })
+        <div class="has-error">
+            @Html.ValidationMessageFor(m => m.EmailAddress, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.State)
+        @Html.TextBoxFor(m => m.State, new { @class = "form-control", placeholder = "State" })
+        <div class="has-error">
+            @Html.ValidationMessageFor(m => m.State, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <hr />
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
